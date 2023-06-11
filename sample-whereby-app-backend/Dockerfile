@@ -16,7 +16,7 @@ COPY --from=composer:2.5.7 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY . ./
 RUN composer install --optimize-autoloader --no-dev
-RUN $(which php) artisan cache:clear
-RUN $(which php) artisan config:cache
-RUN $(which php) artisan route:cache
+# RUN $(which php) artisan cache:clear
+# RUN $(which php) artisan config:cache
+# RUN $(which php) artisan route:cache
 RUN chown -Rf www-data:www-data ./
