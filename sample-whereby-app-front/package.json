@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@volar/vue-language-core": "1.6.3",
     "axios": "^1.4.0",
     "vue": "^3.2.47",
     "vuetify": "^3.3.1"
