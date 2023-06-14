@@ -1,7 +1,28 @@
-version: '3'
+version: "3"
 
+volumes:
+  php_socket:
+networks:
+  web:
+    driver: bridge
 services:
-  php:
-    build: .
+  app:
+    build:
+      context: .
+      dockerfile: ./infra/docker/php/Dockerfile
+    volumes:
+      - php_socket:/var/run/php-fpm
+    networks:
+      - web
+  web:
+    build:
+      context: .
+      dockerfile: ./infra/docker/nginx/Dockerfile
+    volumes:
+      - php_socket:/var/run/php-fpm
     ports:
-      - 8080:8080
+      - 8081:80
+    depends_on:
+      - app
+    networks:
+      - web

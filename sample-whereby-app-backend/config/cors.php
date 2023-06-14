@@ -17,7 +17,7 @@ return [
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'allowed_methods' => ['post', 'delete'],
+    'allowed_methods' => ['*'],
 
     'allowed_origins' => [env('ALLOW_ORIGIN')],
 
