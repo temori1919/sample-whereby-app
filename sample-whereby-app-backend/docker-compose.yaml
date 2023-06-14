@@ -1,28 +1,7 @@
 version: "3"
 
-volumes:
-  php_socket:
-networks:
-  web:
-    driver: bridge
 services:
-  app:
-    build:
-      context: .
-      dockerfile: ./infra/docker/php/Dockerfile
-    volumes:
-      - php_socket:/var/run/php-fpm
-    networks:
-      - web
   web:
-    build:
-      context: .
-      dockerfile: ./infra/docker/nginx/Dockerfile
-    volumes:
-      - php_socket:/var/run/php-fpm
+    build: .
     ports:
       - 8081:80
-    depends_on:
-      - app
-    networks:
-      - web
